@@ -4,10 +4,17 @@ It is a web app written in lua, backed by a postgresql database, that prints sti
 
 Each item can have its own wiki page (on a wiki that is separate from this web app).
 
+# Downloading 
+
+```
+cd ~/
+git clone https://github.com/sudoroom/labitrack
+```
+
 # Installing dependencies
 
 ```
-sudo apt-get install lua5.1 build-essential nodejs npm inotify-tools git pkg-config libpq5 libpq-dev postgresql-9.3 postgresql-contrib
+sudo apt-get install lua5.1 build-essential nodejs npm inotify-tools git pkg-config libpq5 libpq-dev postgresql-9.3 postgresql-contrib libpng12-0 libpng12-dev
 
 cd /usr/bin
 
@@ -15,8 +22,13 @@ ln -s nodejs node
 
 sudo npm install -g handlebars uglify-js coffee-script lessc
 
-git clone https://github.com/esmil/lem.git
+cd ~/labitrack
+git clone https://github.com/sudomesh/ql570
+cd ql570
+make
+cd ../
 
+git clone https://github.com/esmil/lem.git
 cd lem
 ./configure
 make
@@ -28,6 +40,9 @@ cd lem-postgres
 make
 sudo make install
 cd ../
+
+git clone https://github.com/sudomesh/ql570.git
+
 ```
 
 # Setting up the PostgreSQL server and database
@@ -79,7 +94,7 @@ mkdir -p queue/new
 
 Hook up the Brother QL-570 label printer to USB and power.
 
-TODO explain how to configure labitrack to use the printer.
+TODO explain how to configure labitrack to use the printer (udev rule and printloop.sh variable)
 
 # Testing
 
@@ -96,4 +111,6 @@ You probably want to use e.g. apache or nginx as a reverse proxy and you will wa
 TODO document how to set this up
 
 (use the npm library "forever" to automatically restart labitrack if it crashes)
+
+(document how to both autostart printloop.sh and labitrackd.lua)
 
