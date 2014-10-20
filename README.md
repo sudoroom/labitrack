@@ -75,6 +75,12 @@ cd labitrack/
 mkdir -p queue/tmp
 mkdir -p queue/new
 
+# Setting up the label printer
+
+Hook up the Brother QL-570 label printer to USB and power.
+
+TODO explain how to configure labitrack to use the printer.
+
 # Testing
 
 ```
@@ -87,4 +93,7 @@ If you don't get any errors, everything is fine and dandy. Hit ctrl-c to exit.
 
 You probably want to use e.g. apache or nginx as a reverse proxy and you will want to make labitrack automatically start and stop when the server boots and shuts down.
 
-TODO (use the npm library "forever" to automatically restart labitrack if it crashes)
+TODO document how to set this up
+
+(use the npm library "forever" to automatically restart labitrack if it crashes)
+
