@@ -42,7 +42,6 @@ local bind_addr = string.sub(bind, 1, bind_colon-1)
 local bind_port = tonumber(string.sub(bind, bind_colon+1))
 
 local utils        = require 'lem.utils'
-local streams      = require 'lem.streams'
 local postgres     = require 'lem.postgres'
 local qpostgres    = require 'lem.postgres.queued'
 local hathaway     = require 'lem.hathaway'
