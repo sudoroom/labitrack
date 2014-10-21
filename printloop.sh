@@ -1,6 +1,6 @@
 #!/bin/sh
 
-printer="/dev/labelprinter"
+printer="/dev/usb/lp0"
 queuedir=queue
 
 print_queue(){

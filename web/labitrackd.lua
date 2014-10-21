@@ -20,16 +20,16 @@
 local function usage()
 	print('Labitrack daemon')
 	print('usage:    '..arg[0]..' [bind [queue_dir]]')
-	print('defaults: bind=*:8080 queue_dir=./queue')
+	print('defaults: bind=*:8080 queue_dir=../queue')
 	os.exit(1)
 end
 
 --
 -- settings
 --
-local pg_connect_str = 'host=localhost user=labitrack dbname=labitrack password=nerfyoawdAj3'
+local pg_connect_str = 'host=localhost user=labitrack dbname=labitrack password=shlepping.kin.koizumi.jades'
 local bind = arg[1] or '*:8080'
-local queue_dir = arg[2] or './queue'
+local queue_dir = arg[2] or '../queue'
 --
 -- end of settings
 --
@@ -42,6 +42,7 @@ local bind_addr = string.sub(bind, 1, bind_colon-1)
 local bind_port = tonumber(string.sub(bind, bind_colon+1))
 
 local utils        = require 'lem.utils'
+--local streams      = require 'lem.streams'
 local postgres     = require 'lem.postgres'
 local qpostgres    = require 'lem.postgres.queued'
 local hathaway     = require 'lem.hathaway'
@@ -285,7 +286,7 @@ local function save_or_update(req, res)
 	set_json_nocache_headers(res)
 
 	local expected = "application/json"
-	assert(string.sub(req.headers['Content-Type'], 1, string.len(expected)) == expected)
+	assert(string.sub(req.headers['content-type'], 1, string.len(expected)) == expected)
 
 	local body = req:body()
 	local label = json.decode(body)
@@ -320,7 +321,7 @@ POST('/print.json', function(req, res)
 	set_json_nocache_headers(res)
 
 	local expected = "application/x-www-form-urlencoded"
-	assert(string.sub(req.headers['Content-Type'], 1, string.len(expected)) == expected)
+	assert(string.sub(req.headers['content-type'], 1, string.len(expected)) == expected)
 
 	local body = unescape(req:body())
 	expected = "image=data:image/png;base64,"

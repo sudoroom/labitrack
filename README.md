@@ -9,6 +9,8 @@ Each item can have its own wiki page (on a wiki that is separate from this web a
 ```
 cd ~/
 git clone https://github.com/sudoroom/labitrack
+
+sudo mv labitrack /opt/labitrack
 ```
 
 # Installing dependencies
@@ -20,7 +22,7 @@ cd /usr/bin
 
 ln -s nodejs node
 
-sudo npm install -g handlebars uglify-js coffee-script lessc
+sudo npm install -g handlebars@1.0.4-beta uglify-js coffee-script lessc
 
 cd ~/labitrack
 git clone https://github.com/sudomesh/ql570
@@ -86,15 +88,27 @@ setting the password to whatever you chose earlier.
 
 # Create required paths
 
+```
 cd labitrack/
 mkdir -p queue/tmp
 mkdir -p queue/new
+```
 
 # Setting up the label printer
 
-Hook up the Brother QL-570 label printer to USB and power.
+Plug in the label printer (power and usb). It should appear as:
 
-TODO explain how to configure labitrack to use the printer (udev rule and printloop.sh variable)
+```
+/dev/usb/lp0
+```
+
+If it comes up as something else, then change the following line in printloop.sh:
+
+```
+printer="/dev/usb/lp0"
+```
+
+If you get an error where the printer blinks a red light when you attempt to print, try altering the command line option for the ql570 program in trigger.sh file. Changing the 'w' to an 'n' or vice-versa might fix the issue. Look at ql570/README.md for more info.
 
 # Testing
 
@@ -104,13 +118,35 @@ TODO explain how to configure labitrack to use the printer (udev rule and printl
 
 If you don't get any errors, everything is fine and dandy. Hit ctrl-c to exit.
 
-# Running
+# Running as a service
 
-You probably want to use e.g. apache or nginx as a reverse proxy and you will want to make labitrack automatically start and stop when the server boots and shuts down.
+This sections shows you how to run labitrack as a service that gets automatically restarted using upstart and the nodejs program "forever".
 
-TODO document how to set this up
+First install forever:
 
-(use the npm library "forever" to automatically restart labitrack if it crashes)
+```
+sudo npm install -g forever@0.11
+```
 
-(document how to both autostart printloop.sh and labitrackd.lua)
+Then copy the upstart script to /etc/init:
+
+```
+sudo cp upstart/labitrack.conf /etc/init/
+```
+
+If you are not running labitrack from /opt/labitrack then alter the paths in the upstart script before proceeding.
+
+Now start labitrack:
+
+```
+sudo start labitrack
+```
+
+You can verify that labitrack is running by doing:
+
+```
+ps aux|grep labitrack|grep -v grep
+```
+
+You should see both the labitrackd.lua and printloop.sh processes running.
 

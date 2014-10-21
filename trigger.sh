@@ -8,7 +8,7 @@ mkdir -p $printed_dir
 
 for file in $(ls $queue_dir/new/* 2>/dev/null); do
 	echo printing $file
-	./ql570/ql570 $printer $file
+	./ql570/ql570 $printer w $file
 	status=$?
 	if [ $status -ne 0 ] ; then
 		exit $status
