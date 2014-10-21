@@ -1,6 +1,6 @@
 <div class="hide tmplheader">About Labitrack</div>
 <p>
-Glued togther with the following compoments by <a href="http://asbjorn.it/">Asbjørn Sloth Tønnesen</a> in <a href="http://labitat.dk/">Labitat</a>.
+Glued together with the following compoments by <a href="http://asbjorn.it/">Asbjørn Sloth Tønnesen</a> in <a href="http://labitat.dk/">Labitat</a>.
 </p>
 
 <div>
@@ -22,11 +22,14 @@ Glued togther with the following compoments by <a href="http://asbjorn.it/">Asbj
 	</ul>
 </div>
 
+<p>
+Improved and documented by <a href="http://juul.io">Marc Juul</a>
+</p>
+
 <h2>Source</h2>
-<p>The source code is available at the following locations:
+<p>The source code is available at the following location:
 <ul>
-	<li><a href="http://2e8.dk/labitat/labitrack">http://2e8.dk/labitat/labitrack</a> (primary)</li>
-	<li><a href="http://github.com/labitat/labitrack">http://github.com/labitat/labitrack</a></li>
+	<li><a href="http://github.com/sudoroom/labitrack">http://github.com/labitat/labitrack</a></li>
 </ul>
 </p>
 

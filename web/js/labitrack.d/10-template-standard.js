@@ -183,7 +183,7 @@
 		ctx.shadowBlur = 0;
 		ctx.globalAlpha = 1;
 
-		drawQRcode(ctx, h, 'http://o.labitat.dk/'+data.id);
+		drawQRcode(ctx, h, 'http://o.sudoroom.org/'+data.id);
 
 		ctx.translate(h, 0);
 		var y = 50;

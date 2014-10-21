@@ -2,7 +2,7 @@
 	λ.tags = [
 		{
 			name: 'person',
-			desc: 'Owned by a member (not by Labitat)'
+			desc: 'Owned by a member (not by sudo room)'
 		},
 		{
 			name: 'manual',

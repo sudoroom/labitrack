@@ -3,7 +3,7 @@
 	<canvas id="label"/>
 </p>
 <div class="well" style="text-align: right;">
-        <a href="http://o.labitat.dk/{{id}}" class="btn">Wiki</a>
+        <a href="http://o.sudoroom.org/{{id}}" class="btn">Wiki</a>
         <a href="/edit/{{id}}" class="btn">Edit</a>
         <a href="#" class="btn btn_print">Print</a>
 </div>
