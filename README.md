@@ -64,9 +64,20 @@ psql labitrack < sql/labitrack.schema.sql
 logout
 ```
 
+# Customizing for your hackerspace
+
+Before compiling, you will want to find and replace where sudoroom is mentioned, especially the places where o.sudoroom.org is used, since that will be put into every QR-code generated.
+
 # Compiling
 
 ```
+make
+```
+
+You can always recompile if you change something:
+
+```
+make clean
 make
 ```
 
