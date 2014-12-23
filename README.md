@@ -139,10 +139,11 @@ First install forever:
 sudo npm install -g forever@0.11
 ```
 
-Then copy the upstart script to /etc/init:
+Then copy the upstart scripts to /etc/init:
 
 ```
 sudo cp upstart/labitrack.conf /etc/init/
+sudo cp upstart/labitrack-printloop.conf /etc/init/
 ```
 
 If you are not running labitrack from /opt/labitrack then alter the paths in the upstart script before proceeding.
@@ -151,6 +152,7 @@ Now start labitrack:
 
 ```
 sudo start labitrack
+sudo start labitrack-printloop
 ```
 
 You can verify that labitrack is running by doing:

@@ -183,7 +183,11 @@
 		ctx.shadowBlur = 0;
 		ctx.globalAlpha = 1;
 
+
 		drawQRcode(ctx, h, 'http://o.sudoroom.org/'+data.id);
+
+// ToDo make it use name instead of id (but also fix it in templates/labitrack.d/view)
+//		drawQRcode(ctx, h, 'http://o.sudoroom.org/'+encodeURIComponent(data.name));
 
 		ctx.translate(h, 0);
 		var y = 50;
