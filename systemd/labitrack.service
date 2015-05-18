@@ -1,0 +1,18 @@
+[Unit]
+Description=Labitrack
+After=network.service
+Requires=postgresql.service
+
+[Service]
+Type=forking
+Environment=NODE_BIN_DIR=usr/bin
+Environment=NODE_PATH=/usr/local/lib/node_modules
+Environment=WORKDIR=/opt/labitrack/web
+Environment=APPPATH=labitrackd.lua
+Environment=PIDFILE=/var/run/labitrack.pd
+Environment=LOG=/var/log/labitrack.log
+Environment=MIN_UPTIME=5000
+Environment=SPIN_SLEEP_TIME=2000
+WorkingDirectory=/opt/labitrack
+ExecStart=/usr/local/bin/forever --pidfile $PIDFILE -c lem -a -l $LOG --sourceDir $WORKDIR --minUptime $MIN_UPTIME --spinSleepTime $SPIN_SLEEP_TIME start $APPPATH
+

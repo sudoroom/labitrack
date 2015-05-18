@@ -1,0 +1,9 @@
+[Unit]
+Description=Labitrack Printloop
+After=network.service
+Requires=labitrack.service
+
+[Service]
+WorkingDirectory=/opt/labitrack
+ExecStart=/opt/labitrack/printloop.sh
+
