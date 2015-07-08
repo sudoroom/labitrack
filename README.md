@@ -131,35 +131,54 @@ If you don't get any errors, everything is fine and dandy. Hit ctrl-c to exit.
 
 # Running as a service
 
-This sections shows you how to run labitrack as a service that gets automatically restarted using upstart and the nodejs program "forever".
+This sections shows you how to run labitrack as a service that gets automatically restarted using psy.
 
-First install forever:
-
-```
-sudo npm install -g forever@0.11
-```
-
-Then copy the upstart scripts to /etc/init:
+First install psy:
 
 ```
-sudo cp upstart/labitrack.conf /etc/init/
-sudo cp upstart/labitrack-printloop.conf /etc/init/
+sudo npm install -g psy
 ```
 
-If you are not running labitrack from /opt/labitrack then alter the paths in the upstart script before proceeding.
+Then copy the upstart scripts to /etc/init.d:
+
+```
+sudo cp init/labitrack.initd /etc/init/labitrack
+sudo cp init/labitrack-printloop.initd /etc/init/labitrack-printloop
+```
+
+If you are not running labitrack from /opt/labitrack then alter the paths in those scripts before proceeding.
+
+Create the labitrack user:
+
+```
+adduser labitrack
+```
+
+Make it a member of the lp group so it can access the printer:
+
+```
+usermod -a -G lp labitrack
+```
+
+Set permissions:
+
+```
+chown -R labitrack.labitrack your/path/to/labitrack
+```
 
 Now start labitrack:
 
 ```
-sudo start labitrack
-sudo start labitrack-printloop
+sudo /etc/init.d/labitrack start
+sudo /etc/init.d/labitrack-printloop start
 ```
 
 You can verify that labitrack is running by doing:
 
 ```
-ps aux|grep labitrack|grep -v grep
+sudo /etc/init.d/labitrack status
 ```
 
-You should see both the labitrackd.lua and printloop.sh processes running.
+Check again after a couple of minutes to ensure that labitrack isn't constantly restarting (watch to see if the PIDs change).
+
 
