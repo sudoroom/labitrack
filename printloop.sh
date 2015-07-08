@@ -5,7 +5,6 @@ queuedir=queue
 
 print_queue(){
 	for job in $(ls -1 "$queuedir/new"); do
-		print "triggering"
 		./trigger.sh "$printer" "$queuedir"
 	done
 }
